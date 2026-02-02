@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeTribe - Design System & Screens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Royal, Chic Color Palette */
+            --royal-purple: #6B4FA3;
+            --royal-gold: #D4AF37;
+            --royal-navy: #1B1464;
+            --soft-cream: #FAF8F5;
+            --pure-white: #FFFFFF;
+            --warm-grey: #E8E4DF;
+            --text-dark: #2C2C2C;
+            --text-muted: #6B6B6B;
+            --accent-rose: #D4A5A5;
+            --accent-mint: #A5D4C4;
+            
+            /* Typography */
+            --font-display: 'Cormorant', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--pure-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--warm-grey);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+        
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--royal-purple);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-tab {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-tab.active {
+            color: var(--royal-purple);
+            font-weight: 500;
+        }
+        
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--royal-gold);
+        }
+        
+        .nav-tab:hover {
+            color: var(--royal-purple);
+        }
+        
+        /* Main Container */
+        .main-container {
+            margin-top: 80px;
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--royal-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Design System Section */
+        .design-system {
+            display: none;
+        }
+        
+        .design-system.active {
+            display: block;
+        }
+        
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .design-card {
+            background: var(--soft-cream);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--warm-grey);
+        }
+        
+        .design-card h3 {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--royal-purple);
+            margin-bottom: 1rem;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .color-swatch {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0.5rem;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .typography-sample {
+            margin-bottom: 1.5rem;
+        }
+        
+        .typography-sample h4 {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .display-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--royal-navy);
+        }
+        
+        .body-text {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        
+        /* Screen Mockups */
+        .screens-section {
+            display: none;
+        }
+        
+        .screens-section.active {
+            display: block;
+        }
+        
+        .screen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .screen-mockup {
+            background: white;
+            border: 1px solid var(--warm-grey);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(107, 79, 163, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .screen-mockup:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(107, 79, 163, 0.15);
+        }
+        
+        .screen-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .screen-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--royal-purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .screen-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .screen-preview {
+            background: var(--soft-cream);
+            border-radius: 12px;
+            padding: 2rem;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Button Styles */
+        .btn {
+            font-family: var(--font-body);
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--royal-purple);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--royal-navy);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 79, 163, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--royal-purple);
+            border: 2px solid var(--royal-purple);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--royal-purple);
+            color: white;
+        }
+        
+        .btn-gold {
+            background: var(--royal-gold);
+            color: var(--royal-navy);
+        }
+        
+        .btn-gold:hover {
+            background: #C19B2E;
+            transform: translateY(-2px);
+        }
+        
+        /* Profile Card Example */
+        .profile-card-demo {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--royal-purple), var(--accent-rose));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .profile-info {
+            padding: 1.5rem;
+        }
+        
+        .profile-name {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--royal-navy);
+            margin-bottom: 0.3rem;
+        }
+        
+        .profile-details {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            background: var(--soft-cream);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--royal-purple);
+            border: 1px solid var(--warm-grey);
+        }
+        
+        /* Feature List */
+        .feature-list {
+            display: none;
+        }
+        
+        .feature-list.active {
+            display: block;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--soft-cream);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--royal-gold);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(107, 79, 163, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--royal-purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                gap: 1rem;
+            }
+            
+            .nav-tab {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .screen-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Landing Page Preview */
+        .landing-preview {
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--soft-cream) 100%);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(107, 79, 163, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--royal-navy);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--royal-purple);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Match Card Preview */
+        .match-card-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .match-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid var(--warm-grey);
+            transition: all 0.3s ease;
+        }
+
+        .match-item:hover {
+            border-color: var(--royal-purple);
+            transform: translateX(5px);
+        }
+
+        .match-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--royal-purple), var(--accent-mint));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .match-content {
+            flex: 1;
+        }
+
+        .match-name {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--royal-navy);
+        }
+
+        .match-info {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .match-score {
+            background: var(--royal-gold);
+            color: var(--royal-navy);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div class="nav-content">
+            <div class="logo">VibeTribe</div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="design">Design System</button>
+                <button class="nav-tab" data-tab="screens">Key Screens</button>
+                <button class="nav-tab" data-tab="features">Features</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Design System Section -->
+        <section class="design-system active animate-in" id="design">
+            <div class="section-header">
+                <h1 class="section-title">Design System</h1>
+                <p class="section-subtitle">Royal, chic aesthetic with white backgrounds and elegant sans-serif italics</p>
+            </div>
+
+            <div class="design-grid">
+                <!-- Colors -->
+                <div class="design-card">
+                    <h3>Color Palette</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #6B4FA3;">Royal Purple</div>
+                        <div class="color-swatch" style="background: #D4AF37;">Royal Gold</div>
+                        <div class="color-swatch" style="background: #1B1464;">Royal Navy</div>
+                        <div class="color-swatch" style="background: #FAF8F5; color: #2C2C2C; border: 1px solid #E8E4DF;">Soft Cream</div>
+                        <div class="color-swatch" style="background: #D4A5A5;">Accent Rose</div>
+                        <div class="color-swatch" style="background: #A5D4C4;">Accent Mint</div>
+                    </div>
+                </div>
+
+                <!-- Typography -->
+                <div class="design-card">
+                    <h3>Typography</h3>
+                    <div class="typography-sample">
+                        <h4>Display / Headers</h4>
+                        <div class="display-text">Cormorant Italic</div>
+                    </div>
+                    <div class="typography-sample">
+                        <h4>Body Text</h4>
+                        <div class="body-text">Montserrat - Clean, modern, professional sans-serif for all body text and UI elements</div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="design-card">
+                    <h3>Button Styles</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <button class="btn btn-primary">Primary Action</button>
+                        <button class="btn btn-secondary">Secondary Action</button>
+                        <button class="btn btn-gold">Premium Feature</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Card Demo -->
+            <div class="section-header" style="margin-top: 3rem;">
+                <h2 class="section-title">Component Examples</h2>
+            </div>
+
+            <div class="design-grid">
+                <div class="design-card">
+                    <h3>Profile Card</h3>
+                    <div class="profile-card-demo">
+                        <div class="profile-image">SK</div>
+                        <div class="profile-info">
+                            <div class="profile-name">Sarah Khan</div>
+                            <div class="profile-details">Business · AUD · 21</div>
+                            <div class="profile-tags">
+                                <span class="tag">Coffee Dates</span>
+                                <span class="tag">Art Lover</span>
+                                <span class="tag">Foodie</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <h3>Match List Item</h3>
+                    <div class="match-card-preview">
+                        <div class="match-item">
+                            <div class="match-avatar">AM</div>
+                            <div class="match-content">
+                                <div class="match-name">Ahmed Malik</div>
+                                <div class="match-info">Engineering · NYU AD</div>
+                            </div>
+                            <div class="match-score">94%</div>
+                        </div>
+                        <div class="match-item">
+                            <div class="match-avatar">LR</div>
+                            <div class="match-content">
+                                <div class="match-name">Layla Rahman</div>
+                                <div class="match-info">Marketing · AUD</div>
+                            </div>
+                            <div class="match-score">89%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screens Section -->
+        <section class="screens-section" id="screens">
+            <div class="section-header">
+                <h1 class="section-title">Key Screens</h1>
+                <p class="section-subtitle">Complete user journey from landing to matching</p>
+            </div>
+
+            <div class="screen-grid">
+                <!-- Landing Page -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">1. Landing Page</h2>
+                        <p class="screen-description">First impression - elegant, aspirational, clear value proposition</p>
+                    </div>
+                    <div class="screen-preview landing-preview">
+                        <h2 class="hero-title">Find Your Vibe</h2>
+                        <p class="hero-subtitle">University dating, elevated</p>
+                        <div class="cta-buttons">
+                            <button class="btn btn-primary">Join VibeTribe</button>
+                            <button class="btn btn-secondary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onboarding -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">2. Onboarding Flow</h2>
+                        <p class="screen-description">University verification, profile setup, preference selection</p>
+                    </div>
+                    <div class="screen-preview" style="padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="text-align: center;">
+                            <h3 style="font-family: var(--font-display); font-style: italic; color: var(--royal-purple); margin-bottom: 0.5rem;">Step 1 of 4</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Verify your university email</p>
+                        </div>
+                        <input type="email" placeholder="university@email.edu" style="padding: 1rem; border: 1px solid var(--warm-grey); border-radius: 8px; font-family: var(--font-body);">
+                        <button class="btn btn-primary" style="width: 100%;">Send Verification Code</button>
+                        <div style="height: 4px; background: var(--warm-grey); border-radius: 2px; position: relative;">
+                            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 25%; background: var(--royal-gold); border-radius: 2px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Creation -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">3. Profile Builder</h2>
+                        <p class="screen-description">Photo upload, bio, interests, lifestyle preferences</p>
+                    </div>
+                    <div class="screen-preview" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--royal-navy);">Build Your Profile</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                            <div style="aspect-ratio: 1; background: linear-gradient(135deg, var(--royal-purple), var(--accent-rose)); border-radius: 8px;"></div>
+                            <div style="aspect-ratio: 1; background: var(--warm-grey); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--text-muted); border: 2px dashed var(--text-muted);">+</div>
+                            <div style="aspect-ratio: 1; background: var(--warm-grey); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--text-muted); border: 2px dashed var(--text-muted);">+</div>
+                        </div>
+                        <input type="text" placeholder="Your name" style="padding: 0.8rem; border: 1px solid var(--warm-grey); border-radius: 8px;">
+                        <textarea placeholder="Write something interesting about yourself..." style="padding: 0.8rem; border: 1px solid var(--warm-grey); border-radius: 8px; font-family: var(--font-body); resize: none; height: 80px;"></textarea>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="tag" style="cursor: pointer;">☕ Coffee Dates</span>
+                            <span class="tag" style="cursor: pointer;">🎨 Art Lover</span>
+                            <span class="tag" style="cursor: pointer;">🎵 Music</span>
+                            <span class="tag" style="cursor: pointer; background: var(--royal-purple); color: white;">+ Add More</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discovery Feed -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">4. Discovery Feed</h2>
+                        <p class="screen-description">Swipe interface with detailed profiles</p>
+                    </div>
+                    <div class="screen-preview" style="position: relative;">
+                        <div class="profile-card-demo" style="max-width: 100%;">
+                            <div class="profile-image">NK</div>
+                            <div class="profile-info">
+                                <div class="profile-name">Noor Khalifa</div>
+                                <div class="profile-details">Architecture · AUD · 22</div>
+                                <div class="profile-tags">
+                                    <span class="tag">Beach Vibes</span>
+                                    <span class="tag">Adventurous</span>
+                                    <span class="tag">Brunch Lover</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 1rem 0;">Love exploring Dubai's hidden gems and spontaneous road trips. Looking for someone to share sunset beach walks with 🌅</p>
+                                <div style="display: flex; gap: 1rem;">
+                                    <button class="btn btn-secondary" style="flex: 1;">Pass</button>
+                                    <button class="btn btn-primary" style="flex: 1;">Like</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matches -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">5. Matches & Messages</h2>
+                        <p class="screen-description">View connections and start conversations</p>
+                    </div>
+                    <div class="screen-preview">
+                        <div style="text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--royal-purple); margin-bottom: 1.5rem;">Your Matches</div>
+                        <div class="match-card-preview">
+                            <div class="match-item">
+                                <div class="match-avatar">ZA</div>
+                                <div class="match-content">
+                                    <div class="match-name">Zain Al-Farsi</div>
+                                    <div class="match-info">Finance · AUD · 15 mutual friends</div>
+                                </div>
+                                <div class="match-score">96%</div>
+                            </div>
+                            <div class="match-item">
+                                <div class="match-avatar">MH</div>
+                                <div class="match-content">
+                                    <div class="match-name">Maya Hassan</div>
+                                    <div class="match-info">Psychology · NYU AD · Both love art</div>
+                                </div>
+                                <div class="match-score">91%</div>
+                            </div>
+                            <div class="match-item">
+                                <div class="match-avatar">RK</div>
+                                <div class="match-content">
+                                    <div class="match-name">Rashid Khalil</div>
+                                    <div class="match-info">CS · AUS · Study buddies potential</div>
+                                </div>
+                                <div class="match-score">87%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Energy/Vibe Selector -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">6. Daily Vibe Check</h2>
+                        <p class="screen-description">Set your mood to match with similar energy people</p>
+                    </div>
+                    <div class="screen-preview" style="text-align: center;">
+                        <div style="font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--royal-navy); margin-bottom: 1.5rem;">What's your vibe today?</div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--warm-grey); cursor: pointer; transition: all 0.3s;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">☕</div>
+                                <div style="font-family: var(--font-display); font-style: italic; color: var(--royal-purple);">Chill & Coffee</div>
+                            </div>
+                            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--royal-purple); cursor: pointer; box-shadow: 0 5px 15px rgba(107, 79, 163, 0.2);">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎉</div>
+                                <div style="font-family: var(--font-display); font-style: italic; color: var(--royal-purple);">Party Mode</div>
+                            </div>
+                            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--warm-grey); cursor: pointer;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+                                <div style="font-family: var(--font-display); font-style: italic; color: var(--royal-purple);">Study Session</div>
+                            </div>
+                            <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--warm-grey); cursor: pointer;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏖️</div>
+                                <div style="font-family: var(--font-display); font-style: italic; color: var(--royal-purple);">Beach Vibes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events/Hot Spots -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">7. Hot Spots Map</h2>
+                        <p class="screen-description">See where your matches hang out (opt-in)</p>
+                    </div>
+                    <div class="screen-preview" style="background: linear-gradient(135deg, var(--soft-cream) 0%, var(--warm-grey) 100%); position: relative;">
+                        <div style="text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--royal-navy); margin-bottom: 1rem;">Discover Hot Spots</div>
+                        <div style="background: white; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="font-size: 1.5rem;">📍</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--royal-navy);">City Walk</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">8 matches nearby now</div>
+                            </div>
+                            <div style="width: 30px; height: 30px; border-radius: 50%; background: var(--royal-gold); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; color: var(--royal-navy);">8</div>
+                        </div>
+                        <div style="background: white; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="font-size: 1.5rem;">📍</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--royal-navy);">JBR Beach</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">3 matches nearby now</div>
+                            </div>
+                            <div style="width: 30px; height: 30px; border-radius: 50%; background: var(--accent-mint); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; color: var(--royal-navy);">3</div>
+                        </div>
+                        <div style="background: white; border-radius: 8px; padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="font-size: 1.5rem;">📍</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; color: var(--royal-navy);">AUD Library</div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted);">12 matches here often</div>
+                            </div>
+                            <div style="width: 30px; height: 30px; border-radius: 50%; background: var(--accent-rose); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; color: white;">12</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Settings -->
+                <div class="screen-mockup">
+                    <div class="screen-header">
+                        <h2 class="screen-title">8. Profile & Settings</h2>
+                        <p class="screen-description">Manage preferences, privacy, and account</p>
+                    </div>
+                    <div class="screen-preview">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--royal-purple), var(--accent-mint)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-style: italic; font-size: 2rem; color: white;">YN</div>
+                            <div style="font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--royal-navy);">Your Name</div>
+                            <div style="font-size: 0.9rem; color: var(--text-muted);">Business · AUD</div>
+                        </div>
+                        <div style="background: white; border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--warm-grey);">
+                            <span style="color: var(--text-dark);">Edit Profile</span>
+                            <span style="color: var(--text-muted);">→</span>
+                        </div>
+                        <div style="background: white; border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--warm-grey);">
+                            <span style="color: var(--text-dark);">Privacy Settings</span>
+                            <span style="color: var(--text-muted);">→</span>
+                        </div>
+                        <div style="background: white; border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--warm-grey);">
+                            <span style="color: var(--text-dark);">Match Preferences</span>
+                            <span style="color: var(--text-muted);">→</span>
+                        </div>
+                        <div style="background: white; border-radius: 8px; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--warm-grey);">
+                            <span style="color: var(--text-dark);">Upgrade to Premium</span>
+                            <span style="background: var(--royal-gold); color: var(--royal-navy); padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-weight: 600;">VIP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="feature-list" id="features">
+            <div class="section-header">
+                <h1 class="section-title">Complete Feature Set</h1>
+                <p class="section-subtitle">All features organized by category</p>
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-style: italic; font-size: 2rem; color: var(--royal-purple); margin: 3rem 0 1.5rem;">Core Features</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <div class="feature-title">University Verification</div>
+                    <div class="feature-description">Email verification (.edu) with optional student ID upload for enhanced trust badge</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Smart Matching Algorithm</div>
+                    <div class="feature-description">Combines social circle proximity, lifestyle compatibility, academic/career alignment, and mutual interests</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-title">Messaging System</div>
+                    <div class="feature-description">Rich chat with photo sharing, voice notes, GIFs, and icebreaker prompts</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <div class="feature-title">Detailed Profiles</div>
+                    <div class="feature-description">Multiple photos, bio, interests, major, graduation year, lifestyle preferences, relationship goals</div>
+                </div>
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-style: italic; font-size: 2rem; color: var(--royal-purple); margin: 3rem 0 1.5rem;">Viral Features</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <div class="feature-title">Daily Vibe Check</div>
+                    <div class="feature-description">Set your energy level each day - matches you with people in similar moods (study mode, party mode, chill mode, etc.)</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <div class="feature-title">Hot Spots Map</div>
+                    <div class="feature-description">Opt-in location sharing showing where matches hang out (general areas like "City Walk" not exact locations)</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-title">Conversation Streaks</div>
+                    <div class="feature-description">Snapchat-style daily chat streaks unlock profile badges and rewards</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-title">Mutual Friends Reveal</div>
+                    <div class="feature-description">Shows shared connections only after matching - creates exciting "small world" moments</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Campus Crush Polls</div>
+                    <div class="feature-description">Weekly anonymous voting on fun categories (Best Style, Most Approachable, etc.) with profile badges for winners</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Power Hour</div>
+                    <div class="feature-description">One hour daily where all active users can see each other - creates urgency and engagement spikes</div>
+                </div>
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-style: italic; font-size: 2rem; color: var(--royal-purple); margin: 3rem 0 1.5rem;">Social & Discovery</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <div class="feature-title">Story Feature</div>
+                    <div class="feature-description">Instagram-style stories for sharing campus life moments, visible to matches and potential matches</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👯</div>
+                    <div class="feature-title">Group Hangout Mode</div>
+                    <div class="feature-description">Match 4-6 people with similar interests for group activities and friend-group meetups</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎲</div>
+                    <div class="feature-title">Date Roulette</div>
+                    <div class="feature-description">Spin wheel suggests random date ideas with matched person (coffee, beach walk, museum, etc.)</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <div class="feature-title">Music Integration</div>
+                    <div class="feature-description">Spotify/Apple Music sync showing top artists, auto-playing profile songs, music compatibility score</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💭</div>
+                    <div class="feature-title">Icebreaker Games</div>
+                    <div class="feature-description">Would You Rather, Two Truths One Lie, rapid-fire questions to start conversations naturally</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☕</div>
+                    <div class="feature-title">Spontaneous Mode</div>
+                    <div class="feature-description">See who's free RIGHT NOW for impromptu coffee, lunch, or study sessions</div>
+                </div>
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-style: italic; font-size: 2rem; color: var(--royal-purple); margin: 3rem 0 1.5rem;">Premium Features</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-title">See Who Liked You</div>
+                    <div class="feature-description">View all your likes before swiping - no more guessing games</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">Unlimited Rewinds</div>
+                    <div class="feature-description">Go back and change your mind on any profile you passed</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <div class="feature-title">Profile Boost</div>
+                    <div class="feature-description">Be shown to more people for 30 minutes - increase match potential</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Advanced Filters</div>
+                    <div class="feature-description">Filter by specific universities, majors, graduation years, lifestyle preferences</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👻</div>
+                    <div class="feature-title">Incognito Mode</div>
+                    <div class="feature-description">Browse anonymously - only people you like can see your profile</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <div class="feature-title">Photo Insights</div>
+                    <div class="feature-description">AI analysis of which photos perform best, suggestions for better profile pics</div>
+                </div>
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-style: italic; font-size: 2rem; color: var(--royal-purple); margin: 3rem 0 1.5rem;">Safety & Privacy</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-title">Block & Report</div>
+                    <div class="feature-description">Easy reporting system with quick response team, automatic detection of inappropriate content</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">Privacy Controls</div>
+                    <div class="feature-description">Control who sees you, photo blur until match, hide profile from specific people</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-title">Verification Badges</div>
+                    <div class="feature-description">Multiple verification levels: email verified, student ID verified, photo verified</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Screenshot Detection</div>
+                    <div class="feature-description">Notifies users if someone screenshots their profile or messages</div>
+                </div>
+            </div>
+
+            <h2 style="font-family: var(--font-display); font-style: italic; font-size: 2rem; color: var(--royal-purple); margin: 3rem 0 1.5rem;">Engagement & Gamification</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🎖️</div>
+                    <div class="feature-title">Achievement Badges</div>
+                    <div class="feature-description">Earn badges for profile completion, conversations, meeting IRL, being active</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-title">Profile Score</div>
+                    <div class="feature-description">Gamified points for quality profile, good conversations, positive feedback from matches</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-title">Referral Rewards</div>
+                    <div class="feature-description">Bring friends to earn premium features, special badges, or real-world perks</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Weekly Match Report</div>
+                    <div class="feature-description">Personalized analytics: who viewed you, your match success rate, profile tips</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.nav-tab');
+        const sections = {
+            'design': document.getElementById('design'),
+            'screens': document.getElementById('screens'),
+            'features': document.getElementById('features')
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs and sections
+                tabs.forEach(t => t.classList.remove('active'));
+                Object.values(sections).forEach(s => s.classList.remove('active'));
+
+                // Add active to clicked tab and corresponding section
+                tab.classList.add('active');
+                const targetTab = tab.dataset.tab;
+                sections[targetTab].classList.add('active');
+                sections[targetTab].classList.add('animate-in');
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Hover effects for match items
+        document.querySelectorAll('.match-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px)';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>

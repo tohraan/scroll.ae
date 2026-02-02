@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* VibeTribe Design System - Royal, Chic University Dating */
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --royal-purple: 263 35% 47%;
+    --royal-gold: 43 66% 52%;
+    --royal-navy: 245 67% 24%;
+    
+    /* Background Colors */
+    --background: 0 0% 100%;
+    --soft-cream: 36 33% 98%;
+    --warm-grey: 30 14% 90%;
+    
+    /* Text Colors */
+    --foreground: 0 0% 17%;
+    --text-muted: 0 0% 42%;
+    
+    /* Accent Colors */
+    --accent-rose: 0 33% 74%;
+    --accent-mint: 157 33% 74%;
+    
+    /* Semantic Mapping */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 17%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+    
+    --primary: 263 35% 47%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 36 33% 98%;
+    --secondary-foreground: 263 35% 47%;
+    
+    --muted: 36 33% 98%;
+    --muted-foreground: 0 0% 42%;
+    
+    --accent: 43 66% 52%;
+    --accent-foreground: 245 67% 24%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 30 14% 90%;
+    --input: 30 14% 90%;
+    --ring: 263 35% 47%;
+    
+    --radius: 1rem;
+    
+    /* Custom Gradients */
+    --gradient-royal: linear-gradient(135deg, hsl(263 35% 47%) 0%, hsl(0 33% 74%) 100%);
+    --gradient-fresh: linear-gradient(135deg, hsl(263 35% 47%) 0%, hsl(157 33% 74%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(36 33% 98%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 66% 52%) 0%, hsl(43 66% 62%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 5px 20px rgba(107, 79, 163, 0.1);
+    --shadow-lg: 0 10px 40px rgba(107, 79, 163, 0.15);
+    --shadow-gold: 0 5px 15px rgba(212, 175, 55, 0.3);
+    
+    /* Sidebar (unused but required) */
+    --sidebar-background: 36 33% 98%;
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 263 35% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 36 33% 98%;
+    --sidebar-accent-foreground: 263 35% 47%;
+    --sidebar-border: 30 14% 90%;
+    --sidebar-ring: 263 35% 47%;
+  }
+
+  .dark {
+    --background: 245 67% 8%;
+    --foreground: 0 0% 98%;
+    --card: 245 50% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 245 50% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 263 35% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 245 40% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 245 40% 18%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 43 66% 52%;
+    --accent-foreground: 245 67% 8%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 245 40% 18%;
+    --input: 245 40% 18%;
+    --ring: 263 35% 57%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant', serif;
+  }
+  
+  .font-body {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .gradient-royal {
+    background: var(--gradient-royal);
+  }
+  
+  .gradient-fresh {
+    background: var(--gradient-fresh);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+  
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
